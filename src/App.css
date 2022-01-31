@@ -55,6 +55,10 @@ span{
   background-color: #528cff;
 }
 
+.area-input button:focus{
+  outline: 2px solid #759ef1;
+}
+
 .area-input button:active{
   transform: scale(0.98);
 }

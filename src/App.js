@@ -38,17 +38,17 @@ export default function App() {
       <div className="area-input">
         <input
           ref={inputFocus}
-          type="number"
+          type="text"
           placeholder="Peso em (kg) Ex.: 80kg"
           value={peso}
-          onChange={(e) => setPeso(e.target.value.slice(0,3))}
+          onChange={(e) => setPeso(e.target.value.replace(/\D+/, '').slice(0,3))}
           onKeyPress={(e) => e.key === 'Enter' && calcularIMC()}
         />
         <input
-          type="number"
+          type="texts"
           placeholder="Altura em (cm) Ex.: 180cm"
           value={altura}
-          onChange={(e) => setAltura(e.target.value.slice(0,3))}
+          onChange={(e) => setAltura(e.target.value.replace(/\D+/, '').slice(0,3))}
           onKeyPress={(e) => e.key === 'Enter' && calcularIMC()}
         />
         <button
