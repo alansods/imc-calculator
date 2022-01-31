@@ -9,6 +9,7 @@
 
 h1{
   font-size: 50px;
+  margin-bottom: 20px;
 }
 
 span{
@@ -33,6 +34,10 @@ span{
   padding: 0 12px;
   font-size: 18px;
   text-align: center;
+}
+
+.area-input input:focus{
+  outline: 2px solid #357aff;
 }
 
 .area-input button{

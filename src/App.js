@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 export default function App() {
+  const inputFocus = useRef(null);
+  useEffect(() => {
+    inputFocus.current.focus();
+  }, [])
+
   const [peso, setPeso] = useState("");
   const [altura, setAltura] = useState("");
   const [mensagem, setMensagem] = useState("");
@@ -27,23 +32,23 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>Calculador IMC</h1>
+      <h1>Calculadora de IMC</h1>
       <span>Vamos calcular seu IMC.</span>
 
       <div className="area-input">
         <input
+          ref={inputFocus}
           type="number"
           placeholder="Peso em (kg) Ex.: 80kg"
           value={peso}
-          onChange={(e) => setPeso(e.target.value)}
+          onChange={(e) => setPeso(e.target.value.slice(0,3))}
           onKeyPress={(e) => e.key === 'Enter' && calcularIMC()}
         />
         <input
-          pattern="[0-9.]+"
           type="number"
           placeholder="Altura em (cm) Ex.: 180cm"
           value={altura}
-          onChange={(e) => setAltura(e.target.value)}
+          onChange={(e) => setAltura(e.target.value.slice(0,3))}
           onKeyPress={(e) => e.key === 'Enter' && calcularIMC()}
         />
         <button
