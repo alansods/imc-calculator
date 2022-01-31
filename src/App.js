@@ -10,14 +10,18 @@ export default function App() {
     const alt = altura / 100; //pra ficar em cm. Ex.: 1,80
     const imc = peso / (alt * alt);
 
-    if (imc < 18.6) {
-      setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Você está abaixo do peso.`);
-    } else if (imc >= 18.6 && imc < 24.9) {
-      setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Você está no peso ideal.`);
-    } else if (imc >= 24.9 && imc < 34.9) {
-      setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Você está acima do peso.`);
-    } else if (imc > 34.9) {
-      setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Cuidado! Você está obeso.`);
+    if(altura.length && peso.length){
+      if (imc < 18.6) {
+        setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Você está abaixo do peso.`);
+      } else if (imc >= 18.6 && imc < 24.9) {
+        setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Você está no peso ideal.`);
+      } else if (imc >= 24.9 && imc < 34.9) {
+        setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Você está acima do peso.`);
+      } else if (imc > 34.9) {
+        setMensagem(`Seu IMC é: ${imc.toFixed(2)}. Cuidado! Você está obeso.`);
+      }
+    } else{
+      setMensagem(`Digite todos os dados.`);
     }
   }
 
@@ -32,6 +36,7 @@ export default function App() {
           placeholder="Peso em (kg) Ex.: 80kg"
           value={peso}
           onChange={(e) => setPeso(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && calcularIMC()}
         />
         <input
           pattern="[0-9.]+"
