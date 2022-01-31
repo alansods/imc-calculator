@@ -48,10 +48,15 @@ span{
   background-color: #357aff;
   color: #fff;
   font-size: 18px;
+  transition: transform 200ms ease;
 }
 
 .area-input button:hover{
   background-color: #528cff;
+}
+
+.area-input button:active{
+  transform: scale(0.98);
 }
 
 h2{
